@@ -1,0 +1,76 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+
+    match /users/{userId} {
+      allow read, write: if isAuthenticated() && isOwner(userId);
+      match /{subcollection}/{document=**} {
+        allow read, write: if isAuthenticated() && isOwner(userId);
+      }
+    }
+
+    match /watchRooms/{roomId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update: if isAuthenticated() &&
+        (request.auth.uid == resource.data.hostId ||
+         exists(/databases/$(database)/documents/watchRooms/$(roomId)/participants/$(request.auth.uid)));
+      allow delete: if isAuthenticated() && request.auth.uid == resource.data.hostId;
+      match /participants/{userId} {
+        allow read: if isAuthenticated();
+        allow write: if isAuthenticated() && isOwner(userId);
+      }
+      match /messages/{messageId} {
+        allow read: if isAuthenticated();
+        allow create: if isAuthenticated();
+        allow delete: if isAuthenticated() && request.auth.uid == resource.data.userId;
+      }
+    }
+
+    match /dailyPicks/{date} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if false;
+    }
+
+    match /publicPlaylists/{playlistId} {
+      allow read: if true;
+      allow create: if isAuthenticated();
+      allow update, delete: if isAuthenticated() &&
+        request.auth.uid == resource.data.creatorId;
+    }
+
+    match /reviews/{reviewId} {
+      allow read: if true;
+      allow create: if isAuthenticated();
+      allow update, delete: if isAuthenticated() &&
+        request.auth.uid == resource.data.userId;
+    }
+
+    match /movieStats/{movieId} {
+      allow read: if true;
+      allow create, update: if isAuthenticated();
+      allow delete: if false;
+    }
+
+    match /tvStats/{tvId} {
+      allow read: if true;
+      allow create, update: if isAuthenticated();
+      allow delete: if false;
+    }
+
+    match /watchEvents/{eventId} {
+      allow read: if true;
+      allow create: if isAuthenticated();
+      allow update, delete: if isAuthenticated() && request.auth.uid == resource.data.hostId;
+    }
+  }
+}

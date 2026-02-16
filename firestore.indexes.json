@@ -1,0 +1,12 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "watchRooms",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "roomCode", "order": "ASCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
