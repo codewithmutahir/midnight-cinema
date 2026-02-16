@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { fetchGenreList } from "@/lib/tmdb";
 import { fetchTrendingMovies } from "@/lib/tmdb";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://midnight-cinema.vercel.app";
+const BASE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://midnight-cinema.vercel.app").replace(/\/$/, "");
 
 /**
  * Generate sitemap for SEO. Includes homepage, genre list, and popular movie IDs.
