@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { getBlogBySlug, getRelatedPosts, BLOG_REVALIDATE } from "@/lib/blog";
+import { getBlogBySlug, getRelatedPosts } from "@/lib/blog";
 import { getFeaturedImageUrl } from "@/lib/cloudinary";
 import { BlogContent } from "@/components/blog/BlogContent";
 import { TableOfContents } from "@/components/blog/TableOfContents";
@@ -10,7 +10,8 @@ import { AuthorBox } from "@/components/blog/AuthorBox";
 import { RelatedPosts } from "@/components/blog/RelatedPosts";
 import { CTABlock } from "@/components/blog/CTABlock";
 
-export const revalidate = BLOG_REVALIDATE;
+/** 24h ISR – value must be a literal for Next.js segment config */
+export const revalidate = 86400;
 
 const BASE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://midnight-cinema.vercel.app").replace(/\/$/, "");
 
