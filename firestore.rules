@@ -72,5 +72,17 @@ service cloud.firestore {
       allow create: if isAuthenticated();
       allow update, delete: if isAuthenticated() && request.auth.uid == resource.data.hostId;
     }
+
+    match /blogs/{blogId} {
+      allow read: if resource.data.is_published == true || isAuthenticated();
+      allow create, update, delete: if isAuthenticated();
+    }
+
+    // Admin list: doc ID = Firebase Auth UID. Only that user can read their own doc (to check "am I admin?").
+    // Add/remove admins via Firebase Console (or Admin SDK). No client write.
+    match /admins/{uid} {
+      allow read: if isAuthenticated() && request.auth.uid == uid;
+      allow write: if false;
+    }
   }
 }

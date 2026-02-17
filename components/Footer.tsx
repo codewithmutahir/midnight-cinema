@@ -56,6 +56,9 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-6 border-t border-[var(--border-subtle)] pt-6 text-sm text-[var(--text-muted)]">
+          <Link href="/blog" className="transition-colors hover:text-[var(--text-primary)]">
+            Blog
+          </Link>
           <Link href="/search" className="transition-colors hover:text-[var(--text-primary)]">
             Search
           </Link>

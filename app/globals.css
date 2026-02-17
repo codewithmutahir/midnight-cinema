@@ -130,6 +130,99 @@ body.theater-mode {
   outline-offset: 2px;
 }
 
+/* Blog post content – constrain width and prevent horizontal overflow */
+.blog-content {
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-x: hidden;
+}
+.blog-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+.blog-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+.blog-content p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  max-width: 100%;
+}
+.blog-content a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.blog-content a:hover {
+  text-decoration: underline;
+}
+.blog-content ul,
+.blog-content ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  color: var(--text-primary);
+  max-width: 100%;
+}
+.blog-content ul {
+  list-style-type: disc;
+  list-style-position: outside;
+}
+.blog-content ol {
+  list-style-type: decimal;
+  list-style-position: outside;
+}
+.blog-content li {
+  display: list-item;
+  margin-bottom: 0.25rem;
+}
+.blog-content ul ul,
+.blog-content ol ul {
+  list-style-type: circle;
+  margin-top: 0.25rem;
+}
+.blog-content ol ol {
+  list-style-type: lower-alpha;
+  margin-top: 0.25rem;
+}
+.blog-content img {
+  border-radius: 0.5rem;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.blog-content blockquote {
+  margin: 1rem 0;
+  padding-left: 1rem;
+  border-left: 4px solid var(--accent);
+  color: var(--text-muted);
+  max-width: 100%;
+}
+.blog-content pre,
+.blog-content .ql-code-block {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: var(--bg-elevated);
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  max-width: 100%;
+  font-size: 0.875rem;
+}
+.blog-content code {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 .scroll-row {
   scrollbar-width: none;
   -ms-overflow-style: none;

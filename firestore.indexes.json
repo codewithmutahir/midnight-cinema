@@ -1,10 +1,36 @@
 {
   "indexes": [
     {
-      "collectionGroup": "watchRooms",
+      "collectionGroup": "blogs",
       "queryScope": "COLLECTION",
       "fields": [
-        { "fieldPath": "roomCode", "order": "ASCENDING" }
+        { "fieldPath": "is_published", "order": "ASCENDING" },
+        { "fieldPath": "published_at", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "blogs",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "category", "order": "ASCENDING" },
+        { "fieldPath": "published_at", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "blogs",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "tags", "order": "ASCENDING" },
+        { "fieldPath": "published_at", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "blogs",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "tags", "order": "ASCENDING" },
+        { "fieldPath": "is_published", "order": "ASCENDING" },
+        { "fieldPath": "published_at", "order": "DESCENDING" }
       ]
     }
   ],

@@ -113,6 +113,13 @@ export function Header() {
             </Link>
 
             <Link
+              href="/blog"
+              className="rounded-md px-3 py-2 text-sm font-medium text-[var(--text-muted)] transition-colors hover:bg-[var(--bg-elevated)] hover:text-[var(--text-primary)]"
+            >
+              Blog
+            </Link>
+
+            <Link
               href="/pick"
               className="flex items-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium text-[var(--text-muted)] transition-colors hover:bg-[var(--bg-elevated)] hover:text-[var(--accent)]"
               title="Spin the wheel — random movie or TV pick"
@@ -314,6 +321,7 @@ export function Header() {
           <nav className="flex flex-col py-4">
             <Link href="/" className="min-h-[2.75rem] px-4 py-3 text-[var(--text-primary)] hover:bg-[var(--bg-elevated)]" onClick={closeMenus}>Home</Link>
             <Link href="/watch-together" className="min-h-[2.75rem] px-4 py-3 text-[var(--text-primary)] hover:bg-[var(--bg-elevated)]" onClick={closeMenus}>Watch Together</Link>
+            <Link href="/blog" className="min-h-[2.75rem] px-4 py-3 text-[var(--text-primary)] hover:bg-[var(--bg-elevated)]" onClick={closeMenus}>Blog</Link>
             <Link href="/pick" className="min-h-[2.75rem] px-4 py-3 text-[var(--text-primary)] hover:bg-[var(--bg-elevated)]" onClick={closeMenus}>Pick</Link>
             <Link href="/indian" className="min-h-[2.75rem] px-4 py-3 text-[var(--text-primary)] hover:bg-[var(--bg-elevated)]" onClick={closeMenus}>Indian</Link>
             {user && (
